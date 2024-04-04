@@ -1,0 +1,194 @@
+$gold: #dcd1b4;
+$pink: #e6b5a9;
+$white: #fff;
+$sassy: #CF649A;
+$black: #212121;
+$blue: #0e6cff;
+$orange: #ff8700;
+$green:#4caf50;
+$purple:#640fc5;
+$shadow-color: rgba(0, 0, 0, 0.3);
+
+@mixin box-shadow($x, $y, $blur, $spread) {
+  box-shadow: $x $y $blur $spread $shadow-color;
+}
+
+@mixin transition($property, $duration, $timing) {
+  transition: $property $duration $timing;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: $white;
+  height: 200vh;
+}
+
+.logo {
+  margin-left: 30px;
+  
+}
+
+nav {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 0 1.5rem;
+    }
+  }
+}
+
+.link {
+  color: $sassy;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100px;
+  @include box-shadow(0, 0, 5px, 1px); 
+  background-color: $black;
+  position: sticky;
+  
+}
+
+header img {
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  button {
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    @include transition(background-color, 0.3s, ease);
+
+    &:hover {
+      background-color: rgba($sassy, 0.33);
+    }
+
+  }
+
+  .btn-scopri{
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+  }
+  .btn-accedi {
+    background-color: $orange;
+    display: flex;
+    align-items: center;
+  }
+  .btn-contattaci {
+    background-color: $green;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.headline {
+  text-align: center;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+  
+
+  h1 {
+    font-size: 2rem;
+    margin: 100px;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin: 100px;
+    margin-top: 20px;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; 
+  padding: 20px; 
+  background-color: $white; 
+}
+
+.grid-item {
+  img {
+    width: 100%; 
+    height: 95%; 
+    display: block; 
+  }
+}
+
+// Media query per adattare la griglia su dispositivi di dimensioni diverse
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: $purple;
+  align-items: center;
+  
+}
+
+.hero h1,
+.hero p,
+a {
+  color: $white;
+  text-decoration: none;
+  opacity: 0; 
+  transform: translateY(-20px); 
+
+  animation: fadeSlideIn 1s ease-out forwards; 
+}
+
+footer {
+  margin-top: 5%;
+  @include box-shadow(0, 0, 5px, 1px); 
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
